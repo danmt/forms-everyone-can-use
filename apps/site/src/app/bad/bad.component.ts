@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'a11y-forms-bad',
@@ -8,15 +8,18 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class BadComponent implements OnInit {
   form = this.fb.group({
-    firstName: '',
-    lastName: '',
-    age: 18,
-    phone: '',
+    firstName: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    age: null,
+    phone: ['', [Validators.required]],
   });
+  submitted = false;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
 
-  submit() {}
+  submit() {
+    this.submitted = true;
+  }
 }

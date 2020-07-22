@@ -8,21 +8,60 @@
   </header>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form-control">
-      <div class="label">Nombre:</div>
-      <input type="text" />
+    <div class="form-control" [ngClass]="{ submitted: submitted }">
+      <div class="label">
+        <span class="title">Nombre:</span>
+        <span class="required">*</span>
+      </div>
+      <input type="text" formControlName="firstName" />
+      <div
+        *ngIf="
+          form.get('firstName').errors &&
+          (submitted || form.get('firstName').dirty)
+        "
+      >
+        <p *ngIf="form.get('firstName').errors.required" class="error">
+          Por favor, ingresa tu nombre.
+        </p>
+      </div>
     </div>
-    <div class="form-control">
-      <div class="label">Apellido:</div>
-      <input type="text" />
+    <div class="form-control" [ngClass]="{ submitted: submitted }">
+      <div class="label">
+        <span class="title">Apellido:</span>
+        <span class="required">*</span>
+      </div>
+      <input type="text" formControlName="lastName" />
+      <div
+        *ngIf="
+          form.get('firstName').errors &&
+          (submitted || form.get('firstName').dirty)
+        "
+      >
+        <p *ngIf="form.get('firstName').errors.required" class="error">
+          Por favor, ingresa tu apellido.
+        </p>
+      </div>
     </div>
     <div class="form-control">
       <div class="label">Edad:</div>
-      <input type="number" max="120" />
+      <input type="number" max="120" formControlName="age" />
     </div>
-    <div class="form-control">
-      <div class="label">Telefono:</div>
-      <input type="phone" />
+    <div class="form-control" [ngClass]="{ submitted: submitted }">
+      <div class="label">
+        <span class="title">Telefono:</span>
+        <span class="required">*</span>
+      </div>
+      <input type="phone" formControlName="phone" />
+      <div
+        *ngIf="
+          form.get('firstName').errors &&
+          (submitted || form.get('firstName').dirty)
+        "
+      >
+        <p *ngIf="form.get('firstName').errors.required" class="error">
+          Por favor, ingresa tu telefono.
+        </p>
+      </div>
     </div>
 
     <div class="form-actions">

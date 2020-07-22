@@ -15,7 +15,13 @@ section {
       margin: 16px 0;
 
       .label {
-        text-decoration: underline;
+        .title {
+          text-decoration: underline;
+        }
+
+        .required {
+          color: red;
+        }
       }
 
       input {
@@ -24,6 +30,17 @@ section {
         padding: 4px;
         margin-top: 4px;
         font-size: 14px;
+      }
+
+      input.ng-invalid.ng-dirty,
+      &.submitted input.ng-invalid {
+        border-bottom-color: red;
+      }
+
+      .error {
+        color: red;
+        margin-top: 8px;
+        margin-bottom: 0;
       }
     }
 
