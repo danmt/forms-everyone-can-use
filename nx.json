@@ -28,6 +28,9 @@
     "site-e2e": {
       "tags": [],
       "implicitDependencies": ["site"]
+    },
+    "forms": {
+      "tags": []
     }
   }
 }
