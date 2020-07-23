@@ -22,4 +22,9 @@ export class BadComponent implements OnInit {
   submit() {
     this.submitted = true;
   }
+
+  reset() {
+    this.form.reset();
+    this.submitted = false;
+  }
 }
