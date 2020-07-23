@@ -1,7 +1,10 @@
+header {
+  position: absolute;
+  width: 100%;
+}
+
 main {
-  width: 400px;
-  margin: 16px auto;
-  border: 1px solid #ddd;
-  padding: 8px;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  background-color: #ddd;
+  height: calc(100vh - 96px);
+  padding-top: 96px;
 }
