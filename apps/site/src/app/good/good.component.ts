@@ -34,9 +34,6 @@ export class GoodComponent implements OnInit {
 					name: `${to.title(fieldName)}`,
 					id: `/good#${fieldName}`,
 				}));
-
-			console.log(this.validationErrors);
-			console.log(this.validationErrorsTemplate.nativeElement.focus());
 			this.validationErrorsTemplate.nativeElement.focus();
 		}
 	}
@@ -44,5 +41,6 @@ export class GoodComponent implements OnInit {
 	reset() {
 		this.form.reset();
 		this.submitted = false;
+		this.validationErrors = [];
 	}
 }
