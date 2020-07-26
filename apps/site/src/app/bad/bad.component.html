@@ -7,7 +7,7 @@
 		</p>
 	</header>
 
-	<form [formGroup]="form" (ngSubmit)="submit()" (reset)="reset()">
+	<form [formGroup]="form">
 		<div class="form-control" [ngClass]="{ submitted: submitted }">
 			<div class="label">
 				<span class="title">Nombre:</span>
@@ -65,10 +65,10 @@
 				Por favor, ingresa tu telefono.
 			</p>
 		</div>
-
-		<div class="form-actions">
-			<button type="submit">Enviar</button>
-			<button type="reset">Restablecer</button>
-		</div>
 	</form>
+
+	<div class="actions">
+		<button (click)="submit()">Enviar</button>
+		<button (click)="reset()">Restablecer</button>
+	</div>
 </a11y-forms-card>
