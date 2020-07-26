@@ -1,1 +1,110 @@
-<p>good works! 😇</p>
+<a11y-forms-card>
+	<header>
+		<h1>Good Form 😇</h1>
+		<p>
+			This form is way better and it takes into account inclusiveness by
+			allowing more people to use it!
+		</p>
+		<p style="font-style: italic;">
+			Fields with an asterisc (<span class="text-danger">*</span>) are
+			mandatory.
+		</p>
+	</header>
+
+	<div #validationErrorsTemplate tabindex="-1" class="errors-group">
+		<div *ngIf="validationErrors?.length">
+			<p>
+				There were validation errors found while submitting the form. The errors
+				are listed below:
+			</p>
+			<ul>
+				<li *ngFor="let error of validationErrors">
+					<a [href]="error.id">
+						Error found in
+						<span style="font-weight: bold;">{{ error.name }}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<form [formGroup]="form" (ngSubmit)="submit()" (reset)="reset()">
+		<label class="form-control" [ngClass]="{ submitted: submitted }">
+			<div class="label">
+				<span class="title">First Name:</span>
+				<span class="required text-danger">*</span>
+			</div>
+			<input
+				id="firstName"
+				type="text"
+				formControlName="firstName"
+				aria-describedby="first-name-required-error"
+				autocomplete="given-name"
+				[attr.aria-invalid]="!!form.get('firstName')?.errors"
+			/>
+		</label>
+		<div
+			*ngIf="
+				form.get('firstName').errors &&
+				(submitted || form.get('firstName').dirty)
+			"
+		>
+			<p
+				id="first-name-required-error"
+				*ngIf="form.get('firstName').errors.required"
+				class="error"
+			>
+				Please enter your first name.
+			</p>
+		</div>
+
+		<label class="form-control" [ngClass]="{ submitted: submitted }">
+			<div class="label">
+				<span class="title">Last Name:</span>
+				<span class="required text-danger">*</span>
+			</div>
+			<input
+				id="lastName"
+				type="text"
+				formControlName="lastName"
+				aria-describedby="last-name-required-error"
+				autocomplete="family-name"
+				[attr.aria-invalid]="!!form.get('firstName')?.errors"
+			/>
+		</label>
+		<div
+			*ngIf="
+				form.get('lastName').errors && (submitted || form.get('lastName').dirty)
+			"
+		>
+			<p
+				id="last-name-required-error"
+				*ngIf="form.get('lastName').errors.required"
+				class="error"
+			>
+				Please enter your last name.
+			</p>
+		</div>
+
+		<label class="form-control" [ngClass]="{ submitted: submitted }">
+			<div class="label">
+				<span class="title">Birthday:</span>
+			</div>
+			<input
+				type="date"
+				formControlName="birthday"
+				aria-describedby="birthday-help"
+				autocomplete="bday"
+			/>
+		</label>
+
+		<p id="birthday-help" style="font-style: italic; margin-bottom: 0;">
+			Use the format MM/DD/YYYY.
+		</p>
+
+		<div class="form-actions">
+			<button type="submit">Submit</button>
+			<button type="reset">Reset</button>
+		</div>
+	</form>
+</a11y-forms-card>
