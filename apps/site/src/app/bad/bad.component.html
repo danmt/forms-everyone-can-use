@@ -1,16 +1,16 @@
 <a11y-forms-card>
 	<header>
-		<h1>Formulario Malvado 😈</h1>
+		<h1>Bad Form 😈</h1>
 		<p>
-			Este formulario parece estar bien, pero en realidad tiene muchos
-			problemas.
+			This form looks good but when you start inspecting it you'll notice how
+			mean it is.
 		</p>
 	</header>
 
 	<form [formGroup]="form">
 		<div class="form-control" [ngClass]="{ submitted: submitted }">
 			<div class="label">
-				<span class="title">Nombre:</span>
+				<span class="title">First Name:</span>
 				<span class="required">*</span>
 			</div>
 			<input type="text" formControlName="firstName" />
@@ -22,12 +22,12 @@
 			"
 		>
 			<p *ngIf="form.get('firstName').errors.required" class="error">
-				Por favor, ingresa tu nombre.
+				Please enter your first name.
 			</p>
 		</div>
 		<div class="form-control" [ngClass]="{ submitted: submitted }">
 			<div class="label">
-				<span class="title">Apellido:</span>
+				<span class="title">Last Name:</span>
 				<span class="required">*</span>
 			</div>
 			<input type="text" formControlName="lastName" />
@@ -39,36 +39,19 @@
 			"
 		>
 			<p *ngIf="form.get('firstName').errors.required" class="error">
-				Por favor, ingresa tu apellido.
+				Please enter your last name.
 			</p>
 		</div>
 		<div class="form-control">
 			<div class="label">
-				<span class="title">Edad:</span>
+				<span class="title">Birthday:</span>
 			</div>
-			<input type="number" max="120" formControlName="age" />
-		</div>
-		<div class="form-control" [ngClass]="{ submitted: submitted }">
-			<div class="label">
-				<span class="title">Telefono:</span>
-				<span class="required">*</span>
-			</div>
-			<input type="phone" formControlName="phone" />
-		</div>
-		<div
-			*ngIf="
-				form.get('firstName').errors &&
-				(submitted || form.get('firstName').dirty)
-			"
-		>
-			<p *ngIf="form.get('firstName').errors.required" class="error">
-				Por favor, ingresa tu telefono.
-			</p>
+			<input type="date" formControlName="birthday" />
 		</div>
 	</form>
 
 	<div class="actions">
-		<button (click)="submit()">Enviar</button>
-		<button (click)="reset()">Restablecer</button>
+		<button (click)="submit()">Submit</button>
+		<button (click)="reset()">Reset</button>
 	</div>
 </a11y-forms-card>
