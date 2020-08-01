@@ -2,6 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import * as to from 'to-case';
 
+const translations = {
+	firstName: 'nombre',
+	lastName: 'apellido',
+};
+
 @Component({
 	selector: 'a11y-forms-good',
 	templateUrl: './good.component.html',
@@ -28,8 +33,8 @@ export class GoodComponent implements OnInit {
 			this.invalidInputs = Object.keys(this.form.controls)
 				.filter((fieldName) => this.form.get(fieldName).invalid)
 				.map((fieldName) => ({
-					name: `${to.title(fieldName)}`,
-					id: `/good#${fieldName}`,
+					name: `${to.title(translations[fieldName])}`,
+					id: `/amigable#${translations[fieldName]}`,
 				}));
 			this.validationErrorsTemplate.nativeElement.focus();
 		}
