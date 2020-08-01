@@ -12,13 +12,13 @@
 	</header>
 
 	<div #validationErrorsTemplate tabindex="-1" class="errors-group">
-		<div *ngIf="validationErrors?.length">
+		<div *ngIf="invalidInputs?.length">
 			<p>
 				There were validation errors found while submitting the form. The errors
 				are listed below:
 			</p>
 			<ul>
-				<li *ngFor="let error of validationErrors">
+				<li *ngFor="let error of invalidInputs">
 					<a [href]="error.id">
 						Error found in
 						<span style="font-weight: bold;">{{ error.name }}</span>

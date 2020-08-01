@@ -8,14 +8,14 @@ import * as to from 'to-case';
 	styleUrls: ['./good.component.scss'],
 })
 export class GoodComponent implements OnInit {
+	@ViewChild('validationErrorsTemplate') validationErrorsTemplate: ElementRef;
 	form = this.fb.group({
 		firstName: ['', [Validators.required]],
 		lastName: ['', [Validators.required]],
 		birthday: null,
 	});
 	submitted = false;
-	validationErrors = [];
-	@ViewChild('validationErrorsTemplate') validationErrorsTemplate: ElementRef;
+	invalidInputs = [];
 
 	constructor(private fb: FormBuilder) {}
 
@@ -25,11 +25,8 @@ export class GoodComponent implements OnInit {
 		this.submitted = true;
 
 		if (this.form.invalid) {
-			this.validationErrors = Object.keys(this.form.controls)
-				.filter((fieldName) => {
-					const fieldControl = this.form.get(fieldName);
-					return fieldControl && fieldControl.invalid;
-				})
+			this.invalidInputs = Object.keys(this.form.controls)
+				.filter((fieldName) => this.form.get(fieldName).invalid)
 				.map((fieldName) => ({
 					name: `${to.title(fieldName)}`,
 					id: `/good#${fieldName}`,
@@ -41,6 +38,6 @@ export class GoodComponent implements OnInit {
 	reset() {
 		this.form.reset();
 		this.submitted = false;
-		this.validationErrors = [];
+		this.invalidInputs = [];
 	}
 }
